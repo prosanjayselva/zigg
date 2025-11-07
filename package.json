@@ -1,6 +1,6 @@
 {  
   "homepage": "https://prosanjayselva.github.io/zigaa",
-  "name": "client",
+  "name": "zigaa",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy":"npm run build",
-     "deploy": "gh-pages -d build"
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.1.1",
