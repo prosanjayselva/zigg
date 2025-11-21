@@ -1,0 +1,229 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+}
+
+.overallhome{
+    color: purple;
+    width: 90%;
+    /* background-color: lightslategray; */
+    min-height: 100vh;
+    display: flex;
+
+
+}
+
+input{
+    font-size: 16px;
+}
+
+.homeleft{
+    min-height: 100vh;
+    width: 27%;
+    background-color:
+rgba(238, 40, 41);
+    color: white;
+    padding: 10px 5px;
+}
+
+.homeleft button{
+    background-color:black;
+    color:white;
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 2px 2px 3px black;
+}
+
+.homeleft form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+.homeleft label{
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.homeleft form textarea{
+    height: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    resize: vertical;
+}
+
+.homeleft form input{
+    padding: 9px 10px;
+    border-radius: 5px;
+}
+
+.clearr{
+    width:80px;
+    padding: 5px 10px;
+    color: white;
+    background-color: red;
+    border: none;
+    font-size: 17px;
+}
+
+        /* Homeright    */
+
+.homeright{
+    width: 73%;
+    min-height: 100vh;
+    padding:10px;
+    /* background-color:whitesmoke; */
+    background-color: black;
+    color: white;
+    overflow-y: auto;
+    
+    
+}
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(25px);
+}
+
+
+
+.homeright form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    gap: 20px;
+    padding: 15px 10px;
+}
+
+.homeright form h3{
+    padding: 5px 10px;
+   
+    color:rgb(215,38,30);
+    
+    border-radius: 10%;
+    
+    font-size: 30px;
+    
+}
+
+.row1{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 10px 8px;
+   
+}
+
+.column1{
+    /* width: 26%; */
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column;
+
+}
+.column1 label{
+    font-size: 21px;
+}
+.column1 select{
+    font-size: 17px;
+    padding: 5px 10px;
+}
+
+.column1 input{
+     font-size: 17px;
+    padding: 5px 10px;
+    border: none;
+}
+
+.column2{
+    width: 40%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 21px;
+}
+.column2 input{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+   
+}
+
+.column{
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 21px;
+}
+.column input{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+#btnClick{
+   padding: 5px;
+   background-color:rgb(215,38,30);
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    margin: auto;
+}
