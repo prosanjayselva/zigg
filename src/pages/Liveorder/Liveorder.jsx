@@ -1,57 +1,62 @@
-import React, { useState, useEffect, useRef } from "react";
-import './Liveorder.css';
+import React, { useEffect, useState } from "react";
+import './Liveorder.css'
 
-const Liveorder = () => {
+const LiveOrderTable = () => {
+    const [liveOrders, setLiveOrders] = useState([]);
 
-   
+    // Fetch live orders
+    const fetchLiveOrders = () => {
+        fetch("http://localhost:4000/live-orders")
+            .then((res) => res.json())
+            .then((data) => setLiveOrders(data))
+            .catch((err) => console.log(err));
+    };
 
-    const [form,setform]=useState({
-        name:"",
-        phone:"",
-        remark:""
-    })
-
-    const [user,setuser]=useState([]);
-
-    const handledata=(e)=>{
-      
-      setform({...form,[e.target.name]:e.target.value})
-    }
-    // const formrest=useRef(null);
-    const handlesubmit=(e)=>{
-      e.preventDefault();
-      setuser([...user,form])
-    //   formrest.current.reset();
-    //   setform({name:"",phone:"",remark:""})
-    }
-
-    useEffect(()=>{
-        console.log("User datas",user)
-    },[user])
+    useEffect(() => {
+        fetchLiveOrders();
+    }, []);
 
     return (
         <div className="live-container">
-            <div className="form-container">
-                <form onSubmit={handlesubmit}>
-                    <input type="text" value={form.name} name="name"  onChange={handledata} placeholder="name" />
-                    <input type="text" value={form.phone} name="phone"  onChange={handledata} placeholder="phone" />
-                    <input type="text" value={form.remark} name="remark"  onChange={handledata} placeholder="remark" />
-                    <button>Click</button>
-                </form>
+            <h2>Live Orders</h2>
 
-                {user.map((item,index)=>(
-                   <div className="vv" key={index}>
-                    <p>{item.name} </p>
-                    <p>{item.phone} </p>
-                    <p>{item.remark} </p>
-                   </div>
-                ))}
+            <table className="live-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Material Type</th>
+                        <th>Price</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
 
-               
+                <tbody>
+                    {liveOrders.length === 0 && (
+                        <tr>
+                            <td colSpan="7" style={{ textAlign: "center", color: "gray" }}>
+                                No live orders yet
+                            </td>
+                        </tr>
+                    )}
 
-            </div>
+                    {liveOrders.map((order, index) => (
+                        <tr key={index}>
+                            <td>{order.id}</td>
+                            <td>{order.name}</td>
+                            <td>{order.phone}</td>
+                            <td>{order.date}</td>
+                            <td>{order.materialtype}</td>
+                            <td>{order.price}</td>
+                            <td>{order.remarks}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-    )
-}
+    );
+};
 
-export default Liveorder;
+export default LiveOrderTable;

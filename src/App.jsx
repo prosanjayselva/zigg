@@ -1,11 +1,14 @@
 import React from "react";
 import Home from "./pages/Home/Home";
-import Liveorder from "./pages/Liveorder/Liveorder";
+import Quatation from "./pages/Quotion/quotion";
+import LiveOrderTable from "./pages/Liveorder/Liveorder"
 const App=()=>{
   return(
     <div className="app-container">
       <Home/>
-      {/* <Liveorder/> */}
+      
+      <Quatation/>
+      <LiveOrderTable/>
     </div>
   )
 }

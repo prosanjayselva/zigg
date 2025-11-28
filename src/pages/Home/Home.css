@@ -81,7 +81,7 @@ rgba(238, 40, 41);
     min-height: 100vh;
     padding:10px;
     /* background-color:whitesmoke; */
-    background-color: black;
+    background-color: rgb(33, 32, 32);
     color: white;
     overflow-y: auto;
     
@@ -135,6 +135,11 @@ input:checked + .slider:before {
   transform: translateX(25px);
 }
 
+input:checked + .slider2 {
+  background-color:red;
+}
+
+
 
 
 .homeright form{
@@ -161,6 +166,7 @@ input:checked + .slider:before {
 .row1{
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: space-around; */
     gap: 25px;
     padding: 10px 8px;
    
