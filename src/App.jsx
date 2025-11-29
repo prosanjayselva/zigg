@@ -1,16 +1,25 @@
-import React from "react";
+// App.js
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./Nav/nav";
+
 import Home from "./pages/Home/Home";
-import Quatation from "./pages/Quotion/quotion";
-import LiveOrderTable from "./pages/Liveorder/Liveorder"
-const App=()=>{
-  return(
-    <div className="app-container">
-      <Home/>
-      
-      <Quatation/>
-      <LiveOrderTable/>
-    </div>
-  )
+import Quotation from "./pages/Quotation/quotation";
+import LiveOrders from "./pages/Liveorder/Liveorder";
+
+
+
+function App() {
+  return (
+    <HashRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/qutotation" element={<Quotation />} />
+        <Route path="/Liveorder" element={<LiveOrders />} />
+      </Routes>
+    </HashRouter>
+  );
 }
 
 export default App;

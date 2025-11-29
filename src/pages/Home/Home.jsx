@@ -409,7 +409,8 @@ const Home = () => {
 
 
   return (
-    <div className="overallhome">
+   
+   <div className="overallhome">
       <div className="homeleft">
         <h1>Order Book</h1>
         <button>Entry Quotation</button>

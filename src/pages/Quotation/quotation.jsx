@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./quotion.css";
+import "./quotation.css";
 
 const Quatation = () => {
     const [details, setDetails] = useState([]);
@@ -125,10 +125,12 @@ const convertToLive = async (item) => {
     };
 
     return (
+        <>
+        <div className="Qh1"> <h1>Quotation</h1></div>
         <div className="container">
-
             {/* ---------------- LEFT SIDE ---------------- */}
             <div className="left">
+                
                 <h2>User List</h2>
 
                 {/* Date Filter */}
@@ -184,8 +186,8 @@ const convertToLive = async (item) => {
                     </tbody>
                 </table>
             </div>
-
-            {/* ---------------- RIGHT SIDE ---------------- */}
+      
+            {/* ------------- RIGHT SIDE ---------------- */}
             <div className="right">
 
                 <div className="user-card">
@@ -216,12 +218,12 @@ const convertToLive = async (item) => {
                                             <td>{x.date}</td>
                                             <td>{x.materialtype}</td>
                                             <td>{x.price}</td>
-                                            <td>
+                                            <td className="live-bt">
                                                 <button
                                                     className="live-btn"
                                                     onClick={() => convertToLive(x)}
                                                 >
-                                                    Convert to Live
+                                                    <span id="bton" >Convert to Live</span>
                                                 </button>
                                             </td>
                                         </tr>
@@ -234,6 +236,7 @@ const convertToLive = async (item) => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

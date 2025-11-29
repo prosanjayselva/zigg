@@ -10,7 +10,11 @@
     background: #000; /* full black theme */
     color: #fff;
 }
-
+.Qh1 h1{
+    text-align: center;
+    background-color: #000;
+    color: white;
+}
 /* Scrollbar hidden */
 ::-webkit-scrollbar {
     width: 6px;
@@ -42,10 +46,10 @@
 .left table{
     background-color: white;
     color: black;
-    border-radius: 6px;
-}
+    border-radius: 4px;
+} 
 .left table tr td{
-    border: 2px solid black;
+    border: 1.5px solid black;
 }
 /* Date filter labels */
 .filter-box label {
@@ -63,7 +67,19 @@
     margin-bottom: 10px;
     outline: none;
 }
+/* onclick---button */
+.live-bt  button{
+    background-color:#ff0000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none ;
 
+}
+.live-bt button:hover{
+    background-color: rgb(2, 126, 2);
+    cursor: pointer;
+}
 /* Clear Button */
 .clear-btn {
     width: 100%;
@@ -86,9 +102,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    
+    text-align: center
 }
-
 thead {
     background: black;
     color: #fff;
