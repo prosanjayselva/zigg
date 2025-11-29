@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
-import { saveOrder } from "../../api";
+
 
 const Home = () => {
-
-  let boolFill;
   // Step 1: Create a reference for the form
   const formRef = useRef(null);
 
@@ -20,23 +18,18 @@ const Home = () => {
       materialtype: "",
       materialthick: "",
       materialowner: "",
-      response: "No",
-      matss304: "No",
-      matss202: "No",
       materiallen: "",
       materialwid: "",
       runMeter: "",
       pricing: "",
+      quantity: "",
       noOfSheets: "",
       designer: "",
-      materialcast: "",
-      foldingcast: "",
-      transfortcost: ""
-
+      otherCast: "",
+      minimumCast: ""
     });
   };
 
-  const [price, setprice] = useState();
 
 
   const mattype = [
@@ -45,10 +38,13 @@ const Home = () => {
     "SPRING STEEL",
     "AL",
     "BRASS",
-    "GI"
+    "GI",
+    "SS 304",
+    "SS 202",
+    "SS 316"
   ];
 
-  const matthickness = [1, 1.2, 1.5, 1.6, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 14, 16, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+  const matthickness = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.5, 1.6, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 14, 16];
 
   const coddata = ["AAA", "BBB", "CCC"];
 
@@ -63,9 +59,7 @@ const Home = () => {
     materialtype: "",
     materialthick: "",
     materialowner: "",
-    response: "No",
-    matss304: "No",
-    matss202: "No",
+    response: "",
     materiallen: "",
     materialwid: "",
     runMeter: "",
@@ -82,6 +76,7 @@ const Home = () => {
 
   // const [error, seterror] = useState("")
 
+  const [price, setprice] = useState();
 
   const handleChange = (e) => {
 
@@ -92,30 +87,8 @@ const Home = () => {
 
   }
 
-  //Restrict area
-
-  const [refresh, setRefresh] = useState(false);
-
-
-
-  // handlesubmit function 
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const allFilled = Object.values(formData).some(value => value === "" || value == null);
-    let storeall;
-    if (allFilled) {
-      setRefresh(false);
-      storeall = false;
-      alert("All fields not filled");
-    } else {
-      setRefresh(true);
-      storeall = true;
-    }
-
-
-    const savedData = { ...formData };
 
     const checkk = formData.materialtype;
     const thickk = formData.materialthick;
@@ -126,11 +99,11 @@ const Home = () => {
     let piercecost;
     const sheet = formData.noOfSheets;
     const stricker = formData.response;
-    const fold = Number(formData.foldingcast);
-    const matcost = Number(formData.materialcast);
-    const transcost = Number(formData.transfortcost);
+    const fold=Number(formData.foldingcast);
+    const matcost=Number(formData.materialcast);
+    const transcost=Number(formData.transfortcost);
     switch (checkk) {
-
+      // ✅ Group all SS types in a single case
       case "SS":
       case "SS 304":
       case "SS 202":
@@ -145,7 +118,7 @@ const Home = () => {
             runmetercost = (thickk * 12) + 12;
           }
         }
-        else {
+        else if (stricker == "No") {
           if (thickk <= 1) {
             runmetercost = 12;
           }
@@ -181,7 +154,7 @@ const Home = () => {
         console.log("Unknown material ❓");
         break;
     }
-    if (thickk <= 2) {
+    if (thickk <=2) {
       piercecost = 1;
 
     }
@@ -197,17 +170,15 @@ const Home = () => {
     console.log("NO.of sheet", sheet);
     console.log("folding:", formData.foldingcast);
 
-    const finalamout = (((runmeter * runmetercost) + (pierce * piercecost)) * sheet) + fold + transcost + matcost;
-    console.log((((runmeter * runmetercost) + (pierce * piercecost)) * sheet) + fold + transcost + matcost);
+    const finalamout = (((runmeter * runmetercost) + (pierce * piercecost)) * sheet) + fold+transcost+matcost;
+    console.log((((runmeter * runmetercost) + (pierce * piercecost)) * sheet) + fold+transcost+matcost);
     console.log("Final price is :", finalamout);
-
 
 
     //Mathematical logic here 
     let sum = finalamout % 50;
     let result;
     if (finalamout < 300) {
-      result = 300;
       setprice(300);
     }
     else if (sum <= 10) {
@@ -220,197 +191,42 @@ const Home = () => {
 
     }
 
-    const pricc = 6758
 
     // Main code 
-    setuser(formData);
-
-    if (storeall) {
-      console.log(refresh)
-      try {
-        //  Add user to USERS table
-        const userRes = await fetch("http://localhost:4000/addUser", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, price: result }),
-        });
-
-        if (!userRes.ok) {
-          alert("Failed to save user!");
-          return;
-        }
-
-        //  Move all USERS → QUOTATION table
-        const quotationRes = await fetch("http://localhost:4000/users-to-quotation", {
-          method: "POST",
-        });
-
-        if (!quotationRes.ok) {
-          alert("Failed to move data to quotation!");
-          return;
-        }
-
-        alert("Saved Successfully!");
-
-        //  OPTIONAL: clear form after save
-        setFormData({
-          name: "",
-          phone: "",
-          date: "",
-          remarks: "",
-          materialtype: "",
-          materialthick: "",
-          materialowner: "",
-          response: "No",
-          matss304: "No",
-          matss202: "No",
-          materiallen: "",
-          materialwid: "",
-          runMeter: "",
-          pricing: "",
-          noOfSheets: "",
-          designer: "",
-          materialcast: "",
-          foldingcast: "",
-          transfortcost: ""
-        });
-
-      } catch (error) {
-        console.log("ERROR:", error);
-        alert("Something went wrong!");
-      }
-    }
+    setuser([...user, formData]);
 
 
 
-
-    // if (refresh) {
-    //   await fetch("http://localhost:4000/addUser", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     // body:JSON.stringify(formData,result)
-    //     body: JSON.stringify({
-
-    //       name: formData.name,
-    //       phone: formData.phone,
-    //       date: formData.date,
-    //       remarks: formData.remarks,
-    //       materialtype: formData.materialtype,
-    //       materialthick: formData.materialthick,
-    //       materialowner: formData.materialowner,
-    //       response: formData.response,
-    //       matss304: formData.matss304,
-    //       matss202: formData.matss202,
-    //       runMeter: formData.runMeter,
-    //       pricing: formData.pricing,
-    //       noOfSheets: formData.noOfSheets,
-    //       price: result
-
-    //     })
-
-    //   })
-    // }
-
-    // console.log("The refresh value:", refresh)
-
-    // ...your price calculation logic here...
-
-
-
-
-
+    setFormData({
+      name: "",
+      phone: "",
+      date: "",
+      remarks: "",
+      materialtype: "",
+      materialthick: "",
+      materialowner: "",
+      response: "",
+      materiallen: "",
+      materialwid: "",
+      runMeter: "",
+      pricing: "",
+      noOfSheets: "",
+      designer: "",
+      materialcast: "",
+      foldingcast: "",
+      transfortcost: ""
+    });
   }
 
-
-  //  useEffect(() => {
-  //   if (!refresh) return;
-
-  //   const pushToQuotation = async () => {
-  //     await fetch("http://localhost:4000/users-to-quotation", {
-  //       method: "POST",
-  //     });
-  //   };
-
-  //   pushToQuotation();
-
-  //   // Reset form after successful submission
-  //   setFormData({
-  //     name: "",
-  //     phone: "",
-  //     date: "",
-  //     remarks: "",
-  //     materialtype: "",
-  //     materialthick: "",
-  //     materialowner: "",
-  //     response: "No",
-  //     matss304: "No",
-  //     matss202: "No",
-  //     materiallen: "",
-  //     materialwid: "",
-  //     runMeter: "",
-  //     pricing: "",
-  //     noOfSheets: "",
-  //     designer: "",
-  //     materialcast: "",
-  //     foldingcast: "",
-  //     transfortcost: "",
-  //   });
-
-  //   setRefresh(false); // reset refresh
-  // }, [user]);
-
-
-
-
-
-  // useEffect(() => {
-
-  //   const pushToQuotation = async () => {
-  //     await fetch("http://localhost:4000/users-to-quotation", {
-  //       method: "POST",
-  //     });
-  //   };
-
-  //   if (refresh === true) {
-  //     pushToQuotation();
-  //   }
-
-
-  //   setFormData({
-  //     name: "",
-  //     phone: "",
-  //     date: "",
-  //     remarks: "",
-  //     materialtype: "",
-  //     materialthick: "",
-  //     materialowner: "",
-  //     response: "No",
-  //     matss304: "No",
-  //     matss202: "No",
-  //     materiallen: "",
-  //     materialwid: "",
-  //     runMeter: "",
-  //     pricing: "",
-  //     noOfSheets: "",
-  //     designer: "",
-  //     materialcast: "",
-  //     foldingcast: "",
-  //     transfortcost: ""
-  //   })
-
-
-
-  // }, [refresh]);
-
-
-
-  //  alert("The response:",formData.response)   
+  useEffect(() => {
+    console.log("Billing software price method:", price)
+    console.log("Entire data:", user);
+  }, [user]);
 
 
 
   return (
-   
-   <div className="overallhome">
+    <div className="overallhome">
       <div className="homeleft">
         <h1>Order Book</h1>
         <button>Entry Quotation</button>
@@ -423,7 +239,6 @@ const Home = () => {
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            required
           />
 
           <label>Phone Number</label>
@@ -515,17 +330,14 @@ const Home = () => {
                 <input
                   type="checkbox"
                   name="response"
-                  // checked={formData.response === "Yes"}
+                  checked={formData.response === "Yes"}
                   onChange={(e) =>
                     handleChange({
                       target: {
                         name: "response",
                         value: e.target.checked ? "Yes" : "No",
                       },
-
-
                     })
-
                   }
                 />
                 <span className="slider"></span>
@@ -533,52 +345,6 @@ const Home = () => {
               <span style={{ marginLeft: "10px" }}>
                 {formData.response === "Yes" ? "Yes" : "No"}
               </span>
-            </div>
-
-            {/* SS material types  */}
-
-            <div className="column1">
-              <label htmlFor="">SS 304</label>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  name="matss304"
-                  checked={formData.matss304 === "Yes"}
-                  onChange={(e) =>
-                    handleChange({
-                      target: {
-                        name: "matss304",
-                        value: e.target.checked ? "Yes" : "No",
-                      },
-                    })
-                  }
-                />
-                <span className="slider slider2"></span>
-              </label>
-
-            </div>
-
-            {/* SS material ss202  */}
-
-            <div className="column1">
-              <label htmlFor="">SS 202</label>
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  name="matss202"
-                  checked={formData.matss202 === "Yes"}
-                  onChange={(e) =>
-                    handleChange({
-                      target: {
-                        name: "matss202",
-                        value: e.target.checked ? "Yes" : "No",
-                      },
-                    })
-                  }
-                />
-                <span className="slider slider2"></span>
-              </label>
-
             </div>
 
 

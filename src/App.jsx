@@ -1,12 +1,10 @@
-// App.js
+
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Nav/nav";
 
 import Home from "./pages/Home/Home";
 import Quotation from "./pages/Quotation/quotation";
 import LiveOrders from "./pages/Liveorder/Liveorder";
-
-
 
 function App() {
   return (
@@ -15,8 +13,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/qutotation" element={<Quotation />} />
-        <Route path="/Liveorder" element={<LiveOrders />} />
+        <Route path="/quotation" element={<Quotation />} />
+        <Route path="/liveorder" element={<LiveOrders />} />
       </Routes>
     </HashRouter>
   );
