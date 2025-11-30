@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quotation" element={<Quotation />} />
-        <Route path="/liveorder" element={<LiveOrders />} />
+        <Route path="/Liveorder" element={<LiveOrders />} />
       </Routes>
     </HashRouter>
   );
