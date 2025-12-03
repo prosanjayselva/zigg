@@ -1,0 +1,145 @@
+/* CONTAINER */
+.dash-container {
+  max-width: 1180px;
+  margin: 100px auto 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* TITLE */
+.dash-title {
+  color: #ff3b3b;
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-shadow: 0 0 6px red;
+}
+
+/* GRID */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.dash-card {
+  padding: 22px;
+  border-radius: 16px;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: white;
+  box-shadow: 0 0 14px rgba(255, 0, 0, 0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dash-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+.dash-card p {
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* CARD ANIMATION */
+.animate {
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 12px rgba(255,0,0,0.3); }
+  50% { box-shadow: 0 0 22px rgba(255,0,0,0.7); }
+  100% { box-shadow: 0 0 12px rgba(255,0,0,0.3); }
+}
+
+/* COLORS */
+.red { border-color: #ff4444; }
+.orange { border-color: #ff9900; }
+.blue { border-color: #44a0ff; }
+.green { border-color: #00ff88; }
+.pink { border-color: #ff4fa3; }
+.gold { border-color: #ffdd44; }
+.purple { border-color: #c44fff; }
+
+/* CHART ROW */
+.chart-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* CHART BOX */
+.chart-box {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  box-shadow: 0 0 14px rgba(255, 0, 0, 0.28);
+}
+
+.chart-box h3 {
+  color: #ff8888;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+/* MONTHLY CHART BOX */
+.chart-box {
+  margin-top: 30px;
+  padding: 20px;
+  background: #0c0c0c;
+  border-radius: 16px;
+  border: 1px solid rgba(255,0,0,0.4);
+  box-shadow: 0 0 14px rgba(255,0,0,0.28);
+}
+
+.chart-box h3 {
+  color: #ff9999;
+  text-shadow: 0 0 6px red;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.excel-btn {
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #00c853, #009624);
+  border: 1px solid #00ff88;
+  border-radius: 12px;
+  color: white;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 255, 128, 0.6);
+  transition: 0.25s;
+}
+
+.excel-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 128, 0.9);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .dash-title {
+    font-size: 24px;
+  }
+
+  .dash-card p {
+    font-size: 22px;
+  }
+
+  .chart-row {
+    flex-direction: column;
+  }
+}

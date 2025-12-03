@@ -1,142 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
+/* ================= NAVBAR WRAPPER ================= */
 
 .nav {
   width: 100%;
-  height: 80px;
-  padding: 18px 40px;
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
+  height: 78px;
+  padding: 0 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.4);
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25);
+  justify-content: space-between;
+
+  background: linear-gradient(135deg, #080808 0%, #1a0000 40%, #080808 100%);
+  border-bottom: 1px solid rgba(255, 0, 0, 0.5);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 0, 0, 0.4);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-}
-nav h1 {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-shadow: 1px 1px 5px #ff035f;
-  font-size: clamp(20px, 4vw, 40px); /* Responsive size */
-  margin: 0;
-  padding: 10px 0px;
+  z-index: 999;
 }
 
-/* Mobile (small phones) */
-@media (max-width: 480px) {
-  nav h1 {
-    font-size: 22px;
-    text-align: center;
-    padding: 12px 0;
-  }
-}
+/* ================= LOGO AREA ================= */
 
-/* Tablet */
-@media (max-width: 768px) {
-  nav h1 {
-    font-size: 26px;
-  }
-}
-
-/* LOGO */
 .nav-logo {
   display: flex;
-  justify-content: start;
   align-items: center;
+  gap: 12px;
 }
 
+/* Logo image */
 .nav-logo img {
-  width: 80px;       /* adjust size */
-  height: auto;
+  height: 46px;
+  width: auto;
   object-fit: contain;
 }
 
+/* Zigaa Technology text (bigger + stylish) */
+.nav-logo h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 
-/* Nav Links */
+  font-family: "Poppins", system-ui, sans-serif;
+
+  text-shadow:
+    0 0 8px rgba(255, 0, 0, 0.9),
+    0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+/* ================= LINKS (DESKTOP) ================= */
+
 .nav-links {
-  display: flex;
-  gap: 35px;
   list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .nav-links li a {
-  color: #eee;
   text-decoration: none;
-  font-size: 15px;
+  color: #ffffff;
+  font-size: 16px;
   font-weight: 500;
-  transition: 0.3s;
+  letter-spacing: 0.08em;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+/* Red underline hover animation */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: #ff3b3b;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+  transition: width 0.25s ease;
 }
 
 .nav-links li a:hover {
-  color: #ff4444;
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  color: #ffb3b3;
 }
 
-/* Mobile Menu Button */
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* ================= HAMBURGER TOGGLE ================= */
+
 .nav-toggle {
-  width: 30px;
-  height: 25px;
   display: none;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 5px;
   cursor: pointer;
 }
 
 .nav-toggle span {
-  display: block;
-  width: 100%;
+  width: 26px;
   height: 3px;
-  background: #ff4444;
-  border-radius: 4px;
-  transition: 0.4s;
+  border-radius: 999px;
+  background: #ffffff;
+  transition: 0.3s ease;
 }
 
-/* Transform to X */
+/* cross animation when open */
 .nav-toggle span.open:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 .nav-toggle span.open:nth-child(2) {
   opacity: 0;
 }
 .nav-toggle span.open:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Responsive Menu */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    right: 0;
-    top: 70px;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.95);
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
-    padding: 25px 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-20px);
-    transition: 0.3s ease-in-out;
-  }
+/* ================= MOBILE MENU ================= */
 
-  .nav-links.active {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 18px;
   }
 
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 78px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0 22px;
+
+    background: radial-gradient(circle at top, #240000 0%, #060606 70%);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.85);
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+  }
+
+  .nav-links.active {
+    max-height: 240px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
   }
 }

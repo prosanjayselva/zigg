@@ -48,8 +48,6 @@ const Quatation = () => {
         });
     };
 
-    // Convert to live order function 
-
     
     // Convert to live order function 
 const convertToLive = async (item) => {

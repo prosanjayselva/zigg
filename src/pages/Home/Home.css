@@ -1,235 +1,428 @@
+/* ========== GLOBAL ==========\*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.overallhome{
-    color: purple;
-    width: 100%;
-    /* background-color: lightslategray; */
-    min-height: 100vh;
-    display: flex;
-
-
+body {
+  background: radial-gradient(circle at top, #330000 0%, #050505 40%, #000 100%);
+  color: #fff;
 }
 
-input{
-    font-size: 16px;
+/* ========== LAYOUT WRAPPER ==========\*/
+
+.overallhome {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.homeleft{
-    min-height: 100vh;
-    width: 27%;
-    background-color:
-#ff0000;
-    color: white;
-    padding: 10px 5px;
+/* Panels base styling with neon card effect */
+
+.homeleft,
+.homeright {
+  background: rgba(10, 10, 10, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  box-shadow:
+    0 0 10px rgba(255, 0, 0, 0.6),
+    0 0 25px rgba(255, 0, 0, 0.3),
+    0 0 40px rgba(255, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.homeleft button{
-    background-color:black;
-    color:white;
-    margin: 10px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    box-shadow: 2px 2px 3px black;
+/* Subtle hover lift */
+
+.homeleft:hover,
+.homeright:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 18px rgba(255, 0, 0, 0.9),
+    0 0 40px rgba(255, 0, 0, 0.4),
+    0 0 70px rgba(255, 0, 0, 0.25);
+  border-color: rgba(255, 80, 80, 0.9);
 }
 
-.homeleft form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-}
-.homeleft label{
-    font-size: 19px;
-    font-weight: 600;
+/* Widths desktop */
+
+.homeleft {
+  width: 30%;
 }
 
-.homeleft form textarea{
-    height: 150px;
-    border-radius: 10px;
-    padding: 10px;
-    resize: vertical;
+.homeright {
+  width: 68%;
 }
 
-.homeleft form input{
-    padding: 9px 10px;
-    border-radius: 5px;
+/* ========== HEADINGS ==========\*/
+
+.homeleft h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow:
+    0 0 8px #ff0000,
+    0 0 18px rgba(255, 80, 80, 0.9);
+  letter-spacing: 1px;
 }
 
-.clearr{
-    width:80px;
-    padding: 5px 10px;
-    color: white;
-    background-color: red;
-    border: none;
-    font-size: 17px;
+.homeleft h3,
+.homeright h3 {
+  margin: 18px 0 10px;
+  color: #ff3b3b;
+  font-size: 18px;
+  text-shadow:
+    0 0 8px rgba(255, 0, 0, 0.7),
+    0 0 15px rgba(255, 60, 60, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-        /* Homeright    */
+/* ========== BUTTONS ==========\*/
 
-.homeright{
-    width: 75%;
-    min-height: 100vh;
-    padding:10px;
-    /* background-color:whitesmoke; */
-    background-color: rgb(0, 0, 0);
-    color: white;
-    overflow-y: auto;
-    
-    
+.homeleft button,
+#btnClick,
+.clearr {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 0, 0, 0.7);
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
+/* Main CTA button (Entry Quotation & Submit) */
 
+.homeleft button,
+#btnClick {
+  background: linear-gradient(135deg, #ff0000, #aa0000);
+  color: #fff;
+  width: 100%;
+  box-shadow:
+    0 0 12px rgba(255, 0, 0, 0.9),
+    0 0 30px rgba(255, 0, 0, 0.45);
+}
+
+.homeleft button:hover,
+#btnClick:hover {
+  background: linear-gradient(135deg, #ff3b3b, #ff0000);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow:
+    0 0 18px rgba(255, 0, 0, 1),
+    0 0 40px rgba(255, 0, 0, 0.7);
+}
+
+/* Ripple/glow animation on buttons */
+
+.homeleft button::after,
+#btnClick::after,
+.clearr::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-120%) rotate(25deg);
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.homeleft button:hover::after,
+#btnClick:hover::after,
+.clearr:hover::after {
+  transform: translateX(260%) rotate(25deg);
+}
+
+/* Clear button alternative style */
+
+.clearr {
+  margin-top: 12px;
+  background: transparent;
+  color: #ff6b6b;
+  box-shadow:
+    0 0 5px rgba(255, 0, 0, 0.4),
+    inset 0 0 5px rgba(255, 0, 0, 0.4);
+}
+
+.clearr:hover {
+  background: rgba(255, 0, 0, 0.1);
+  color: #fff;
+}
+
+/* Submit button layout */
+
+#btnClick {
+  margin-top: 24px;
+}
+
+/* ========== LABELS & INPUTS ==========\*/
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #ff6969;
+  font-weight: 600;
+}
+.error-text {
+  display: block;
+  font-size: 12px;
+  color: #ff4d4d;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 9px 11px;
+  background: rgba(12, 12, 12, 0.96);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 0, 0.6);
+  color: #fff;
+  margin-bottom: 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #777;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #ff4242;
+  box-shadow:
+    0 0 10px rgba(255, 0, 0, 0.8),
+    0 0 25px rgba(255, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Textarea */
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ========== GRID LAYOUT (ROWS & COLUMNS) ==========\*/
+
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 14px;
+  margin-bottom: 8px;
+}
+
+.column,
+.column1,
+.column2 {
+  margin-bottom: 8px;
+}
+
+/* Default desktop widths */
+
+.column,
+.column1 {
+  flex: 1 1 calc(33.333% - 10px);
+}
+
+.column2 {
+  flex: 1 1 calc(50% - 10px);
+}
+
+/* ========== TOGGLE SWITCH (Sticker / SS 304 / SS 202) ==========\*/
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 25px;
+  width: 46px;
+  height: 22px;
+  margin-top: 4px;
 }
 
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  display: none;
 }
 
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 25px;
-  transition: 0.3s;
+  background: #333;
+  border-radius: 22px;
+  inset: 0;
+  transition: 0.3s ease;
+  box-shadow:
+    0 0 5px rgba(255, 0, 0, 0.7),
+    inset 0 0 4px rgba(0, 0, 0, 0.8);
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 19px;
-  width: 19px;
-  left: 3px;
+  height: 16px;
+  width: 16px;
+  left: 4px;
   bottom: 3px;
-  background-color: white;
+  background-color: #fafafa;
   border-radius: 50%;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }
 
 input:checked + .slider {
-  background-color: #4caf50;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #ff0000 35%, #660000 100%);
+  box-shadow:
+    0 0 10px rgba(255, 0, 0, 0.9),
+    0 0 12px rgba(255, 0, 0, 0.7);
 }
 
 input:checked + .slider:before {
-  transform: translateX(25px);
+  transform: translateX(23px);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 18px rgba(255, 0, 0, 0.9);
 }
 
-input:checked + .slider2 {
-  background-color:red;
+/* Alternate slider (SS) */
+
+.slider2 {
+  background: #550000;
 }
 
+/* Sticker text */
 
+.column1 span {
+  font-size: 13px;
+}
 
+/* ========== PRICE DISPLAY ==========\*/
 
-.homeright form{
-    height: 100%;
+.homeright > form > :not(button) + #btnClick {
+  margin-top: 20px;
+}
+
+/* If you render price directly as text (just {price}) */
+.homeright form > span,
+.homeright form > div.price-display {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff4d4d;
+  text-shadow:
+    0 0 8px rgba(255, 0, 0, 0.8),
+    0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+/* ========== RESPONSIVENESS ==========\*/
+
+/* Medium screens (tablets, small laptops) */
+@media (max-width: 992px) {
+  .overallhome {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .homeleft,
+  .homeright {
     width: 100%;
-    display: flex;
+  }
+
+  .homeleft {
+    order: 1;
+  }
+
+  .homeright {
+    order: 2;
+    margin-top: 10px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .overallhome {
+    padding: 12px;
+  }
+
+  .homeleft,
+  .homeright {
+    padding: 16px;
+  }
+
+  .row1 {
     flex-direction: column;
-    
-    gap: 20px;
-    padding: 15px 10px;
+  }
+
+  .column,
+  .column1,
+  .column2 {
+    flex: 1 1 100%;
+  }
+
+  .homeleft h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .homeleft button {
+    margin-bottom: 16px;
+  }
+
+  #btnClick {
+    margin-top: 18px;
+  }
 }
 
-.homeright form h3{
-    padding: 5px 10px;
-   
-    color:rgb(215,38,30);
-    
-    border-radius: 10%;
-    
-    font-size: 30px;
-    
-}
+/* Very small screens */
+@media (max-width: 480px) {
+  .overallhome {
+    padding: 10px;
+  }
 
-.row1{
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-around; */
-    gap: 25px;
-    padding: 10px 8px;
-   
-}
+  .homeleft,
+  .homeright {
+    padding: 14px;
+    border-radius: 12px;
+  }
 
-.column1{
-    /* width: 26%; */
-    width: 200px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    flex-direction: column;
+  label {
+    font-size: 12px;
+  }
 
-}
-.column1 label{
-    font-size: 21px;
-}
-.column1 select{
-    font-size: 17px;
-    padding: 5px 10px;
-}
+  input,
+  select,
+  textarea {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
 
-.column1 input{
-     font-size: 17px;
-    padding: 5px 10px;
-    border: none;
-}
-
-.column2{
-    width: 40%;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    font-size: 21px;
-}
-.column2 input{
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-   
-}
-
-.column{
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    flex-direction: column;
-    font-size: 21px;
-}
-.column input{
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-}
-#btnClick{
-   padding: 5px;
-   background-color:#ff0000;
-    font-size: 17px;
-    font-weight: 600;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    width: 150px;
-    margin: auto;
+  .switch {
+    transform: scale(0.95);
+  }
 }
