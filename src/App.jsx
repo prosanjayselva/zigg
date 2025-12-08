@@ -1,11 +1,13 @@
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Nav/nav";
-
-import Home from "./pages/Home/Home";
+// import "./theme.css";
+import Home from "./pages/dashboard/Home";
+import NewQuotat from "./pages/newQuotat/newQuotat";
 import Quotation from "./pages/Quotation/quotation";
 import LiveOrders from "./pages/Liveorder/Liveorder";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Account from "./pages/account/account";
+import CompletedOrders from "./pages/dashboard/completeOrder/completeOrder";
 
 function App() {
   return (
@@ -13,12 +15,15 @@ function App() {
       <Navbar />
 
       <Routes>
-        
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="/newQuotat" element={<NewQuotat />} />
         <Route path="/quotation" element={<Quotation />} />
         <Route path="/Liveorder" element={<LiveOrders />} />
-        <Route path="/Dashboard" element={<Dashboard/>}/>
+        <Route path="/Account"  element={<Account/>}/>
+        <Route path="/completed" element={<CompletedOrders />} />
+
       </Routes>
+      
     </HashRouter>
   );
 }

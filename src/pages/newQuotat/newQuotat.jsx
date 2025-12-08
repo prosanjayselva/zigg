@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import "./Home.css";
+import "./newQuotat.css";
 
 const Home = () => {
   const formRef = useRef(null);
@@ -398,7 +398,7 @@ const Home = () => {
       {/* LEFT SIDE */}
       <div className="homeleft">
         <h1>Order Book</h1>
-        <button type="button">Entry Quotation</button>
+        {/* <button type="button">Entry Quotation</button> */}
 
         <form ref={formRef}>
           <label>Customer Name</label>
@@ -426,8 +426,10 @@ const Home = () => {
 
           <label>Estimated Delivery Date</label>
           <input
+            
+            id="calender"
             type="date"
-            name="date"
+            name="date" 
             value={formData.date}
             onChange={handleChange}
             required

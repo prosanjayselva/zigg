@@ -36,7 +36,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '"/zigg/"',
   build: {
     outDir: 'build'  // ⬅ THIS creates client/build/
   }

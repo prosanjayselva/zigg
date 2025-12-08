@@ -19,16 +19,19 @@ const Navbar = () => {
       
       <ul className={`nav-links ${open ? "active" : ""}`}>
         <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-        <li><Link to="/quotation" onClick={closeMenu}>Quotation</Link></li>
-        <li><Link to="/Liveorder" onClick={closeMenu}>Live Orders</Link></li>
-        <li><Link to="/Dashboard" onClick={closeMenu}>Dashboard</Link></li>
+        <li><Link to="/newQuotat" onClick={closeMenu}>NewQuotation</Link></li>
+        {/* <li><Link to="/quotation" onClick={closeMenu}>Quotation</Link></li> */}
+        {/* <li><Link to="/Liveorder" onClick={closeMenu}>Live Orders</Link></li> */}
+        {/* <li><Link to="/Dashboard" onClick={closeMenu}>Dashboard</Link></li> */}
+        <li><Link to="/Account" onClick={closeMenu}>Account</Link></li>
       </ul>
 
       <div className="nav-toggle" onClick={() => setOpen(!open)}>
         <span className={open ? "open" : ""}></span>
         <span className={open ? "open" : ""}></span>
-        <span className={open ? "open" : ""}></span>
-        <span className={open ? "open" : ""}></span>
+        {/* <span className={open ? "open" : ""}></span> */}
+        {/* <span className={open ? "open" : ""}></span>  */}
+        <span className={open ? "open" : ""}></span> 
       </div>
     </nav>
   );

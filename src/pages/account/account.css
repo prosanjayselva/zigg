@@ -1,0 +1,123 @@
+/* ===========================
+   ZIGAA ACCOUNT PAGE THEME
+   RED + BLACK NEON
+=========================== */
+
+.account-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(circle at top, #ff4d4d 0%, #330000 40%, #000000 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===========================
+   PAGE TITLE
+=========================== */
+.title h1{
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 15px #ff1a1a;
+  margin-bottom: 10px;
+}
+/* ===========================
+   GRID LAYOUT FOR CARDS
+=========================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* ===========================
+   CARD STYLING
+=========================== */
+.card {
+  padding: 25px;
+  background: #0b0b0b;
+  border-radius: 16px;
+  box-shadow: inset 0 0 10px #330000, 0 0 12px rgba(255, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 12px #660000, 0 0 18px rgba(255, 0, 0, 0.7);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #ff4040;
+  text-shadow: 0 0 6px #ff0000;
+}
+
+.card p {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* ===========================
+   RANGE FILTER SECTION
+=========================== */
+.range-filter {
+  margin-top: 15px !important;
+}
+
+.range-filter input[type="date"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff6666;
+  background: #1c1c1c;
+  color: white;
+  outline: none;
+  box-shadow: inset 0 0 5px #330000;
+}
+
+.range-filter input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) sepia(1) saturate(50) hue-rotate(330deg);
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #ff3333;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.4);
+}
+
+.btn:hover {
+  background: #e60000;
+  box-shadow: 0 0 12px rgba(255, 30, 30, 0.7);
+}
+
+/* ===========================
+   GRAPH CARD
+=========================== */
+.card canvas {
+  margin-top: 15px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card p {
+    font-size: 22px;
+  }
+}

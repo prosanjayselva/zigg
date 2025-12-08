@@ -39,7 +39,7 @@ const LiveOrderTable = () => {
   // Mark as completed
   const markCompleted = async (order) => {
     try {
-      const res = await fetch("http://localhost:4000/completed-orders", {
+      const res = await fetch("http://localhost:4000/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order),
@@ -47,16 +47,12 @@ const LiveOrderTable = () => {
 
       if (!res.ok) throw new Error("Failed to mark as completed!");
 
-      // Remove from live orders
-      await fetch(`http://localhost:4000/live-orders/${order.id}`, {
-        method: "DELETE",
-      });
-
       setLiveOrders((prev) => prev.filter((o) => o.id !== order.id));
     } catch (err) {
       alert(err.message);
     }
   };
+
 
   // Filter logic
   const filteredOrders = liveOrders.filter((order) => {

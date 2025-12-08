@@ -57,6 +57,7 @@ body {
 .left {
   flex: 0.9;
   min-width: 260px;
+  /* background-color: #ff0000; */
 }
 
 .right {
@@ -73,7 +74,7 @@ body {
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 16px;
+  font-size: 20px;
   text-shadow: 0 0 4px rgba(255, 0, 0, 0.7);
 }
 
@@ -88,7 +89,7 @@ body {
 }
 
 .filter-box label {
-  font-size: 13px;
+  font-size: 16px;
   color: #ff8a8a;
   font-weight: 600;
 }
@@ -99,7 +100,7 @@ body {
   border-radius: 10px;
   border: 1px solid rgba(255, 0, 0, 0.6);
   color: #fff;
-  font-size: 13px;
+  font-size: 16px;
   outline: none;
   min-width: 160px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;

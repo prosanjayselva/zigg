@@ -1,0 +1,64 @@
+/* ===== PAGE WRAPPER ===== */
+.completed-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #0e0e0e;    /* Clean dark background */
+  padding: 30px;
+  color: white;
+}
+
+/* ===== TITLE ===== */
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff4d4d;         /* Soft red */
+}
+
+/* ===== TABLE ===== */
+.completed-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111;       /* Soft black */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #333; /* Minimal border */
+}
+
+/* ===== HEADER ===== */
+.completed-table thead {
+  background: #1a1a1a;    /* Soft dark */
+}
+
+.completed-table th {
+  padding: 12px;
+  text-align: left;
+  color: #ff4d4d;         /* Soft red */
+  font-size: 16px;
+  border-bottom: 1px solid #333;
+}
+
+/* ===== BODY ===== */
+.completed-table td {
+  padding: 10px;
+  font-size: 15px;
+  color: #ffffff;         /* Clean white text */
+  border-bottom: 1px solid #262626;
+}
+
+/* Row hover */
+.completed-table tbody tr:hover {
+  background: rgba(255, 77, 77, 0.08); /* Soft red tint */
+}
+
+/* Even rows */
+.completed-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03); 
+}
+
+/* Price column (subtle) */
+.completed-table td:last-child {
+  font-weight: 600;
+  color: #ff4d4d;
+}
